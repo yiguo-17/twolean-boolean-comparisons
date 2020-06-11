@@ -10,9 +10,9 @@ const {
   isTeacher,
   isAdmin,
   isElementary,
-  notAnElementarySchoolAdministrator,
-  isMiddleSchoolTeacher,
   areDifferentPeople,
+  isMiddleSchoolTeacher,
+  notAnElementarySchoolAdministrator,
 } = require('./main')
 
 describe('moreThan5', () => {
@@ -110,6 +110,16 @@ describe('isElementary', () => {
   })
 })
 
+describe('areDifferentPeople', () => {
+  it('returns whether two names are identical or not', () => {
+    expect(areDifferentPeople('colin', 'messi')).toBe(true)
+    expect(areDifferentPeople('colin', 'col')).toBe(true)
+    expect(areDifferentPeople('colin', 'coln')).toBe(true)
+    expect(areDifferentPeople('colin', 'colin is such a doll')).toBe(true)
+    expect(areDifferentPeople('colin', 'colin')).toBe(false)
+  })
+})
+
 describe('isMiddleSchoolTeacher', () => {
   it('returns whether the first parameter is the string `teacher` AND the second parameter is a number from 6-8 inclusive', () => {
     expect(isMiddleSchoolTeacher('admin', 7)).toBe(false)
@@ -124,15 +134,8 @@ describe('isMiddleSchoolTeacher', () => {
 describe('notAnElementarySchoolAdministrator', () => {
   it('returns whether the first given string is NOT `elementary` OR whether the second given string is NOT `admin`', () => {
     expect(notAnElementarySchoolAdministrator('elementary', 'admin')).toBe(false)
-    expect(notAnElementarySchoolAdministrator('elementary', 'teacher')).toBe(true)
     expect(notAnElementarySchoolAdministrator('college', 'guidance counselor')).toBe(true)
+    expect(notAnElementarySchoolAdministrator('elementary', 'teacher')).toBe(true)
     expect(notAnElementarySchoolAdministrator('pre-k', 'admin')).toBe(true)
-  })
-})
-
-describe('areDifferentPeople', () => {
-  it('returns whether two names are identical or not', () => {
-    expect(areDifferentPeople('colin', 'messi')).toBe(true)
-    expect(areDifferentPeople('colin', 'colin')).toBe(false)
   })
 })
