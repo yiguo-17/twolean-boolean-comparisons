@@ -44,7 +44,7 @@ function isElementary(l){
 }
 
 function differentPeople (n1 , n2){
-  return n1===n2;
+  return n1 != n2;
 }
 function isMiddleSchoolTeacher(r, l){
   return r==='teacher'&& l>= 6&& l<=8;
